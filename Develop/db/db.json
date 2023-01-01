@@ -1,9 +1,5 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text"
-    },
-    {
         "title": "New Note",
         "text": "test",
         "id": "f6d9"
@@ -14,8 +10,13 @@
         "id": "5adc"
     },
     {
-        "title": "Siera Note",
-        "text": "123",
-        "id": "2f08"
+        "title": "ABC Note",
+        "text": "abc text",
+        "id": "907e"
+    },
+    {
+        "title": "Another Note",
+        "text": "testing 123",
+        "id": "3232"
     }
 ]
