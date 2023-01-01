@@ -5,6 +5,8 @@ const fs = require('fs');
 // Helper method for generating unique ids
 const uuid = require('./helpers/uuid');
 
+const { readFromFile, writeToFile } = require('./helpers/fsUtils');
+
 const PORT = 3001;
 
 const app = express();
@@ -23,7 +25,11 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
   });
 
-app.get('/api/notes', (req, res) => res.json(dbData));
+// GET Route for retrieving all the notes
+app.get('/api/notes', (req, res) => {
+  console.info(`${req.method} request received for notes`);
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+});
 
 // POST request to add a note
 app.post('/api/notes', (req, res) => {
@@ -75,6 +81,23 @@ app.post('/api/notes', (req, res) => {
   } else {
     res.status(500).json('Error in posting note');
   }
+});
+
+// DELETE Route for a specific note
+app.delete('/api/notes/:id', (req, res) => {
+  const noteId = req.params.id;
+  readFromFile('./db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Make a new array of all tips except the one with the ID provided in the URL
+      const result = json.filter((note) => note.id !== noteId);
+
+      // Save that array to the filesystem
+      writeToFile('./db/db.json', result);
+
+      // Respond to the DELETE request
+      res.json(`Item ${noteId} has been deleted 🗑️`);
+    });
 });
 
 app.listen(PORT, () => {

@@ -7,5 +7,15 @@
         "title": "New Note",
         "text": "test",
         "id": "f6d9"
+    },
+    {
+        "title": "Test Note",
+        "text": "test",
+        "id": "5adc"
+    },
+    {
+        "title": "Siera Note",
+        "text": "123",
+        "id": "2f08"
     }
 ]
