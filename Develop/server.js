@@ -7,7 +7,7 @@ const uuid = require('./helpers/uuid');
 
 const { readFromFile, writeToFile } = require('./helpers/fsUtils');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -17,10 +17,12 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+// GET Route for homepage
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// GET Route for notes page
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
   });
