@@ -4,9 +4,11 @@
 
 An application that allows users to write, save and delete notes. It uses an Express.js back end and will save and retrieve note data from a JSON file.
 
+Click [here](https://note-taker-app-siera.herokuapp.com/) to view the application.
+
 ## Demo
 
-![GIF](./Develop/public/assets/images/note-taker-demo.gif)
+![GIF](./public/assets/images/note-taker-demo.gif)
 
 ## Installation
 
